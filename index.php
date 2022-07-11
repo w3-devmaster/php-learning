@@ -1,46 +1,46 @@
 <?php
-$x = 10;
-$y = 100.01;
+// $x = 10;
+// $y = 100.01;
 
-$z = true; // false  // boolean
+// $z = true; // false  // boolean
 
-$txt = 'Apichat';
+// $txt = 'Apichat';
 
-$cars = [
-    'bmw',
-    'honda',
-    'yamaha',
-]; //  Indexed Array // อาร์เรย์ แบบมีคีย์เป็นตัวเลข
+// $cars = [
+//     'bmw',
+//     'honda',
+//     'yamaha',
+// ]; //  Indexed Array // อาร์เรย์ แบบมีคีย์เป็นตัวเลข
 
-$person = [
-    'name'     => 'Apichat',
-    'lastname' => 'Kumjensi',
-]; // Associative Array // อาร์เรย์ ที่มีคีย์กำกับ
+// $person = [
+//     'name'     => 'Apichat',
+//     'lastname' => 'Kumjensi',
+// ]; // Associative Array // อาร์เรย์ ที่มีคีย์กำกับ
 
-$persons = [
-    'Head' => [
-        'firstname' => 'Apichat',
-        'lastname'  => 'Kumjensi',
-        'age'       => 32,
-        'profiles'  => [
-            'facebook' => 'PEP',
-            'line'     => "pepsi",
-        ],
-    ],
-    [
-        'firstname' => 'Visanu',
-        'lastname'  => 'Chotmit',
-        'age'       => 35,
-    ],
-    [
-        'firstname' => 'Manow',
-        'lastname'  => 'Orange',
-        'age'       => 25,
-    ],
-]; // Multi Dimensional Array
+// $persons = [
+//     'Head' => [
+//         'firstname' => 'Apichat',
+//         'lastname'  => 'Kumjensi',
+//         'age'       => 32,
+//         'profiles'  => [
+//             'facebook' => 'PEP',
+//             'line'     => "pepsi",
+//         ],
+//     ],
+//     [
+//         'firstname' => 'Visanu',
+//         'lastname'  => 'Chotmit',
+//         'age'       => 35,
+//     ],
+//     [
+//         'firstname' => 'Manow',
+//         'lastname'  => 'Orange',
+//         'age'       => 25,
+//     ],
+// ]; // Multi Dimensional Array
 
-echo $persons['Head']['profiles']['line'];
-echo $persons[0]['firstname'];
+// echo $persons['Head']['profiles']['line'];
+// echo $persons[0]['firstname'];
 
 // echo 'He is name : ' . $persons[0]['firstname'] . ' อายุ ' . $persons[0]['age'] . '<br>';
 // echo 'He is name : ' . $persons[1]['firstname'] . '<br>';
@@ -72,4 +72,13 @@ Object
 
  */
 // echo 'Myname is : ' . $txt . ' ได้คะแนน : ' . ( $y + $x ) . ' คะแนน';
+
+for ( $i = 2; $i <= 24; $i++ )
+{
+    for ( $x = 1; $x <= 12; $x++ )
+    {
+        echo $i . ' x ' . $x . ' = ' . ( $i * $x ) . '<br>';
+    }
+    echo '<hr>';
+}
 ?>
