@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if ( isset( $_SESSION['user'] ) )
+    {
+        header( 'location: user.php' );
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3 class="text-center alert alert-info">สมัครไอดีใหม่</h3>
+                <h3 class="text-center alert alert-info">เข้าสู่ระบบ</h3>
                 <hr>
             </div>
             <div class="col-4 mx-auto border border-success p-3 rounded shadow">
@@ -45,23 +49,14 @@
                         unset( $_SESSION['msg'] );
                     }
                 ?>
-
-                <form action="server.php" method="post">
+                <form action="server-login.php" method="post">
                     <p class="mb-1 mt-3">Username</p>
                     <input class="form-control" name="username" type="text" placeholder="ชื่อผู้ใช้งาน" required>
                     <p class="mb-1 mt-3">Password</p>
-                    <input class="form-control" name="password" type="text" placeholder="รหัสผ่าน" required>
-                    <p class="mb-1 mt-3">Re-Password</p>
-                    <input class="form-control" name="password2" type="text" placeholder="ยืนยันรหัสผ่าน" required>
-                    <p class="mb-1 mt-3">ชื่อ</p>
-                    <input class="form-control" name="firstname" type="text" placeholder="ชื่อ" required>
-                    <p class="mb-1 mt-3">นามสกุล</p>
-                    <input class="form-control" name="lastname" type="text" placeholder="นามสกุล" required>
-                    <p class="mb-1 mt-3">อีเมล</p>
-                    <input class="form-control" name="email" type="email" placeholder="อีเมล" required>
+                    <input class="form-control" name="password" type="password" placeholder="รหัสผ่าน" required>
                     <hr>
                     <div class="d-grid gap-2">
-                        <input class="btn btn-success" name="register" type="submit" value="สมัครไอดี">
+                        <input class="btn btn-success" name="login" type="submit" value="เข้าสู่ระบบ">
                     </div>
                 </form>
             </div>

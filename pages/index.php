@@ -1,5 +1,13 @@
 <?php
+    session_start();
     include './db/connections.php';
+
+    if ( isset( $_GET['logout'] ) )
+    {
+        unset( $_SESSION['user'] );
+        session_destroy();
+    }
+
     $sql = "SELECT * FROM users";
 
     $result = mysqli_query( $conn, $sql );
@@ -26,7 +34,7 @@
                 <table class="table table-striped table-success text-center">
                     <thead>
                         <tr>
-                            <th colspan="4">
+                            <th colspan="5">
                                 <h3> รายชื่อสมาชิกทั้งหมด</h3>
                             </th>
                         </tr>
@@ -35,6 +43,7 @@
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Email</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +56,9 @@
                             <td><?=$row['firstname']?></td>
                             <td><?=$row['lastname']?></td>
                             <td><?=$row['email']?></td>
+                            <td>
+                                <a class="btn btn-danger px-2 py-0" href="delete.php?idx=<?=$row['idx']?>">x</a>
+                            </td>
                         </tr>
 
                         <?php
