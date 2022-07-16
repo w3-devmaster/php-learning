@@ -1,6 +1,7 @@
 <?php
     session_start();
     include './db/connections.php';
+    include './functions/functions.php';
     // isset( $_SESSION['user'] ); /// มีไหม
     if ( empty( $_SESSION['user'] ) ) // ว่างไหม
     {
@@ -10,11 +11,6 @@
     }
 
     $user = trim( $_SESSION['user'] );
-
-    $sql = "SELECT * FROM users where username = '$user' ";
-
-    $result = mysqli_query( $conn, $sql );
-    $row    = mysqli_fetch_assoc( $result );
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,41 +72,53 @@
                     }
                 ?>
             </div>
-            <div class="col-4">
+            <div class="col-lg-3 col-md-4 col-12">
                 <table class="table table-striped table-sm table-borderless" style="font-size:12px;">
                     <tr>
                         <td>ไอดี</td>
-                        <td><?=$row['username']?></td>
+                        <td><?=getUser( $conn, $user, 'username' )?></td>
                     </tr>
                     <tr>
                         <td>อีเมล</td>
-                        <td><?=$row['email']?></td>
+                        <td><?=getUser( $conn, $user, 'email' )?></td>
                     </tr>
                     <tr>
                         <td>ชื่อ-สกุล</td>
-                        <td><?=$row['firstname'] . ' ' . $row['lastname']?></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="font-size:12px;">
-                            <a class="btn btn-sm btn-danger" href="index.php?logout=1">ออกจากระบบ</a>
-                        </td>
+                        <td><?=getUser( $conn, $user, 'firstname' ) . ' ' . getUser( $conn, $user, 'lastname' )?></td>
                     </tr>
                 </table>
+                <hr class="divider">
+                <ul>
+                    <li><a href="user.php">หน้าแรก</a></li>
+                    <li><a href="user.php?cmd=changepassword">เปลี่ยนรหัสผ่าน</a></li>
+                    <li><a href="user.php?cmd=profile">โปรไฟล์</a></li>
+                    <li><a href="index.php?logout=1">ออกจากระบบ</a></li>
+                </ul>
             </div>
             <div class="col-8">
-                <h6 class="text-info">เปลี่ยนรหัสผ่าน</h6>
-                <form action="changepassword.php" method="post">
-                    <input id="pass1" class="form-control form-control-sm mb-2" name="password" type="password"
-                        placeholder="รหัสผ่านปัจจุบัน">
-                    <input id="pass2" class="form-control form-control-sm mb-2" name="new_password" type="password"
-                        placeholder="รหัสผ่านใหม่">
-                    <input id="pass3" class="form-control form-control-sm mb-2" name="new_password2" type="password"
-                        placeholder="ยืนยันรหัสผ่านใหม่">
-                    <hr>
-                    <input id="show-pass" type="checkbox" onclick="showPass()"> แสดงรหัสผ่าน
-                    <hr>
-                    <input class="btn btn-sm btn-success" name="do" type="submit" value="เปลี่ยนรหัสผ่าน">
-                </form>
+                <?php
+                    if ( isset( $_GET['cmd'] ) )
+                    {
+                        switch ( $_GET['cmd'] )
+                        {
+                        case 'changepassword':
+                            include 'changepass-form.php';
+                            break;
+
+                        case 'profile':
+                            include 'profile.php';
+                            break;
+
+                        default:
+                            include './functions/object.php';
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        include './functions/object.php';
+                    }
+                ?>
             </div>
         </div>
     </div>
