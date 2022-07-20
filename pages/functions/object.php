@@ -2,7 +2,7 @@
 
 class Person
 {
-    public $name;
+    public $name; // var   /// properties
     public $lastname;
     public $bt_date;
     // private $age;
@@ -12,7 +12,6 @@ class Person
         $this->name     = $name;
         $this->lastname = $lastname;
         $this->bt_date  = $bt_date;
-
     }
 
     public function showName()
@@ -36,7 +35,7 @@ class Person
         //  ประกาศใช้ภายในคลาส เท่านั้น
     }
 
-    public static function age3() /////  **********************************
+    public static function age3() /////  **********************************  method  // function
     {
         echo '55 Years';
         // เรียกจากนอกคลาสได้โดยตรง
@@ -44,22 +43,24 @@ class Person
 
 }
 
-$jod   = new Person( 'Vissanu', 'Chotmit', '1986-05-25' );
-$boss  = new Person( 'Jiradech', 'Phanraksa', '1996-02-20' );
-$manow = new Person( 'Supharoek', 'Manow', '1996-04-10' );
+// echo Person::age3();
 
-$jod->showName();
-echo "<br>";
-$jod->age();
-echo "<br>";
+// $jod   = new Person( 'Vissanu', 'Chotmit', '1986-05-25' );
+// $boss  = new Person( 'Jiradech', 'Phanraksa', '1996-02-20' );
+// $manow = new Person( 'Supharoek', 'Manow', '1996-04-10' );
 
-$boss->showName();
-echo "<br>";
-$boss->age();
-echo "<br>";
+// $jod->showName();
+// echo "<br>";
+// $jod->age();
+// echo "<br>";
 
-$manow->showName();
-echo "<br>";
-$manow->age();
+// $boss->showName();
+// echo "<br>";
+// $boss->age();
+// echo "<br>";
+
+// $manow->showName();
+// echo "<br>";
+// $manow->age();
 
 ?>

@@ -1,28 +1,19 @@
 <?php
-function getUser( $conn, $user, $column )
-{
-    if ( $user != '' )
-    {
-        $sql    = "select * from users where username = '$user' ";
-        $result = mysqli_query( $conn, $sql );
+// require 'class.php'; /// ต้องมี ไม่งั้นหยุดทำงาน
+// include 'class.php'; /// โปรแกรมจะทำงานต่อ ถึงแม้ว่าจะไม่มีไฟล์
 
-        $count = mysqli_num_rows( $result );
-        if ( $count > 0 )
-        {
-            $row = mysqli_fetch_assoc( $result );
+require_once 'class.php';
+include_once 'class.php';
 
-            return $row[$column];
-        }
-        else
-        {
-            return '-';
-        }
-    }
-}
+// use Functions\MyClass;
 
-function xxxTel( $txt )
-{
-    return substr( $txt, 0, 3 ) . '-' . substr( $txt, 3, 3 ) . '-' . substr( $txt, 6 ); // ตัดตัวอักษร
-}
+// $my       = new MyClass();
+// $my->name = 'Disk';
+// $my->h    = 160;
+// $my->w    = 50;
+
+// echo $my->showData();
+
+echo 55555555555555;
 
 ?>
